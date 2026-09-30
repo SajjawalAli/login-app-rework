@@ -1,0 +1,7 @@
+Django>=5.2,<5.3
+psycopg[binary]>=3.2.0
+python-dotenv>=1.0.0
+django-axes>=7.0.0
+pytest>=8.0.0
+pytest-django>=4.8.0
+ruff>=0.3.0
