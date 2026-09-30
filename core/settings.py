@@ -12,13 +12,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import os
 from pathlib import Path
-
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+load_dotenv(BASE_DIR / '.env')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-x14xlo4sy@=_1(x%9)&1kqc6xz(h6!j_pbvbmx8$kdh$y&q$pt'
@@ -58,7 +56,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -148,3 +146,7 @@ LOGIN_URL = '/login/'
 # Rate limiting (django-axes)
 AXES_FAILURE_LIMIT = 5
 AXES_COOLOFF_TIME = 1  
+
+SESSION_COOKIE_AGE = 1800  # Logout after 30 minutes (1800 seconds) of inactivity
+SESSION_SAVE_EVERY_REQUEST = True  # Reset the 30-minute timer on every user activity/click
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Expire session as soon as the browser tab/window is closed
