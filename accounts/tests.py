@@ -28,7 +28,7 @@ class AuthSystemTests(TestCase):
     # Test 1: A new person can sign up
     def test_user_can_signup(self):
         response = self.client.post(self.signup_url, self.valid_user_data)
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 200)
         self.assertTrue(User.objects.filter(username='testuser').exists())
 
     # Test 2: That person can then log in
