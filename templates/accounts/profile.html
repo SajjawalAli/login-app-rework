@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Profile</title>
+</head>
+<body>
+    <h2>Welcome, {{ user.username }}!</h2>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+
+    <!-- Built-in logout requires a POST request in Django 4.2+ -->
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Log Out</button>
+    </form>
+</body>
+</html>
